@@ -24,9 +24,7 @@ def binarize_df(label_path):
     df = df.fillna("None")  # to avoid error
 
     mlb = MultiLabelBinarizer()
-    result = mlb.fit_transform(
-        df.drop(columns=["filenames"]).values
-    )  # drop not tagging cols
+    result = mlb.fit_transform(df.drop(columns=["filenames"]).values)  # drop not tagging cols
 
     bin_df = pd.DataFrame(result, columns=mlb.classes_)  # drop non-useless col.
     if "None" in bin_df.columns:
@@ -148,17 +146,11 @@ class ImgTagDataModule(pl.LightningDataModule):
         if stage == "fit" or stage is None:
             train_df, val_df = train_test_split(self.train_val_df, test_size=0.2)
 
-            self.train_ds = ImgTagDataset(
-                train_df, self.root_dir, self.train_augmentation
-            )
-            self.val_ds = ImgTagDataset(
-                val_df, self.root_dir, self.test_val_augmentation
-            )
+            self.train_ds = ImgTagDataset(train_df, self.root_dir, self.train_augmentation)
+            self.val_ds = ImgTagDataset(val_df, self.root_dir, self.test_val_augmentation)
 
         if stage == "test" or stage is None:
-            self.test_ds = ImgTagDataset(
-                self.test_df, self.root_dir, self.test_val_augmentation
-            )
+            self.test_ds = ImgTagDataset(self.test_df, self.root_dir, self.test_val_augmentation)
 
     def train_dataloader(self):
         return DataLoader(
@@ -170,11 +162,7 @@ class ImgTagDataModule(pl.LightningDataModule):
         )
 
     def val_dataloader(self):
-        return DataLoader(
-            self.val_ds, batch_size=self.batch_size, num_workers=0, pin_memory=True
-        )
+        return DataLoader(self.val_ds, batch_size=self.batch_size, num_workers=0, pin_memory=True)
 
     def test_dataloader(self):
-        return DataLoader(
-            self.test_ds, batch_size=self.batch_size, num_workers=0, pin_memory=True
-        )
+        return DataLoader(self.test_ds, batch_size=self.batch_size, num_workers=0, pin_memory=True)
