@@ -24,12 +24,12 @@ def api_predict():
         return 'Bad Request', 400
 
     image_byte = file.read()
-    predict_class = get_prediction(image_byte=image_byte)
-    print("predicted_class result: ", predict_class)
-    if predict_class is None:
+    predict_tags = get_prediction(image_byte=image_byte)
+    print("predict_tags: ", predict_tags)
+    if predict_tags is None:
         return 'Internal Sever Error', 500
 
-    return jsonify({'predict_class': predict_class})
+    return jsonify({'predict_tags': predict_tags})
 
 
 @app.errorhandler(werkzeug.exceptions.RequestEntityTooLarge)

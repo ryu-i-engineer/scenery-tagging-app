@@ -38,9 +38,9 @@ const ImageTagging = () => {
     SendImageAPI("http://127.0.0.1:5000/api", formData)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.predict_class);
-        setEnTags(response.predict_class.English);
-        setJaTags(response.predict_class["日本語"]);
+        console.log(response.predict_tags);
+        setEnTags(response.predict_tags.English);
+        setJaTags(response.predict_tags["日本語"]);
         setAfterPredict(true);
       })
       .catch((response) => {
