@@ -26,12 +26,16 @@ python send_api.py
 
 ## Screen samples
 ### Before upload image
-<img src="./doc/Top_before.png" width="480px;">
+![Top_before](./doc/Top_before.png)
+<!-- <img src="./doc/Top_before.png" width="480px;"> -->
 
 ### After upload image
-<img src="./doc/Top_after1.png" width="480px;">
+![Top_after](./doc/Top_after1.png)
+![Top_after](./doc/Top_after2.png)
+![Top_after](./doc/Top_after3.png)
+<!-- <img src="./doc/Top_after1.png" width="480px;">
 <img src="./doc/Top_after2.png" width="480px;">
-<img src="./doc/Top_after3.png" width="480px;">
+<img src="./doc/Top_after3.png" width="480px;"> -->
 
 ### API sample
 ```shell
