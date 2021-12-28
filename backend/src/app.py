@@ -25,7 +25,9 @@ def api_predict():
 
     image_byte = file.read()
     predict_class = get_prediction(image_byte=image_byte)
-    print(predict_class)
+    print("predicted_class result: ", predict_class)
+    if predict_class is None:
+        return 'Internal Sever Error', 500
 
     return jsonify({'predict_class': predict_class})
 
