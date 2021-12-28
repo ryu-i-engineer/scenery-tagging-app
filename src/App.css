@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -8,7 +9,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,4 +20,14 @@
 
 .App-link {
   color: #61dafb;
+}
+#img-uploaded{
+  max-width: 50%;
+  max-height: 100%;
+}
+
+#upload-area{
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
 }
