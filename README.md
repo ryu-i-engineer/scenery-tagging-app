@@ -1,41 +1,28 @@
-# Sample Project
-**In currently, there is no place to put pretrained model, so this sample won't run.**
-
-To use this, run this code.
-```shell
-python app.py
-```
+# Scenery Tagging App(Demo)
+Predict scenery images tagging.
 
 ## From browser
 Access to the link: http://127.0.0.1:5000/
-
-## Use from API
-Run this script.
-```shell
-python send_api.py
-```
 
 ### Remarks
 - You can't upload greater than 10MB image.
 
 ### Response
-- Status code: 200 is "Success"
-- Status code: 400 is "Bad Request"
-- Status code: 413 is "Max Content Length Over"
-- Status code: 500 is "Internal Server Error"
+| Status code | Meaning                  |
+|-------------|--------------------------|
+| 200         | OK                       |
+| 400         | Bad Request              |
+| 413         | Max Content Length Error |
+| 500         | Internal Server Error    |
+| Lava Hot    | 1                        |
 
-## Screen samples
+## Sample screenshot
 ### Before upload image
 ![Top_before](./doc/Top_before.png)
-<!-- <img src="./doc/Top_before.png" width="480px;"> -->
 
 ### After upload image
 ![Top_after](./doc/Top_after1.png)
 ![Top_after](./doc/Top_after2.png)
-![Top_after](./doc/Top_after3.png)
-<!-- <img src="./doc/Top_after1.png" width="480px;">
-<img src="./doc/Top_after2.png" width="480px;">
-<img src="./doc/Top_after3.png" width="480px;"> -->
 
 ### API sample
 ```shell
