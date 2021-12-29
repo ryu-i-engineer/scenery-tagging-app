@@ -1,6 +1,5 @@
 import io
 
-import numpy as np
 import torch
 from PIL import Image
 from transformers import BeitFeatureExtractor, BeitModel
