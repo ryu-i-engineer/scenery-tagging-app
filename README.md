@@ -14,7 +14,6 @@ Access to the link: http://127.0.0.1:5000/
 | 400         | Bad Request              |
 | 413         | Max Content Length Error |
 | 500         | Internal Server Error    |
-| Lava Hot    | 1                        |
 
 ## Sample screenshot
 ### Before upload image
