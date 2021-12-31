@@ -11,11 +11,8 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer
 from torch.utils.data import DataLoader, Dataset
-from transformers import BeitFeatureExtractor
 
-beit_feature_extractor = BeitFeatureExtractor.from_pretrained(
-    "microsoft/beit-base-patch16-224-pt22k-ft22k"
-)
+from commons import beit_feature_extractor
 
 
 def binarize_df(label_path: str) -> pd.DataFrame:
@@ -95,8 +92,6 @@ class ImgTagDataModule(pl.LightningDataModule):
         test_df: pd.DataFrame = None,
         batch_size=32,
         img_size=224,
-        mean=(0.5, 0.5, 0.5),
-        std=(0.5, 0.5, 0.5),
     ):
 
         super().__init__()
@@ -121,7 +116,6 @@ class ImgTagDataModule(pl.LightningDataModule):
                 alb.GaussianBlur(blur_limit=(1, 3)),
                 alb.CLAHE(clip_limit=6.0, tile_grid_size=(8, 8), p=1),
                 alb.HorizontalFlip(),
-                # alb.Normalize(mean, std),
                 ToTensorV2(),
             ]
         )
@@ -129,7 +123,6 @@ class ImgTagDataModule(pl.LightningDataModule):
         self.test_val_augmentation = alb.Compose(
             [
                 alb.Resize(height=img_size, width=img_size),
-                # alb.Normalize(mean=mean, std=std),
                 ToTensorV2(),
             ]
         )

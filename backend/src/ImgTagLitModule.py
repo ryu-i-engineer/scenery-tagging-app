@@ -12,7 +12,7 @@ class BeiTNet(nn.Module):
             nn.Linear(768, 768),
             nn.Dropout(0.1),
             nn.LayerNorm(768, eps=1e-12),
-            nn.Tanh(),
+            nn.GELU(),
             nn.Linear(768, class_num)
         )
 

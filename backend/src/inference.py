@@ -1,8 +1,6 @@
 import json
 
-import torch
-
-from commons import get_model, transform_image
+from commons import get_model, transform_image, device
 from ImgTagDataset import convert_onehot_string_labels_multi
 
 json_path = "../class_labels/scenery_labels.json"
@@ -13,8 +11,7 @@ with open(json_path, 'r', encoding='utf-8') as file:
 model = get_model(len(json_arr['English']))
 
 
-def get_prediction(image_byte):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+def get_prediction(image_byte: bytes):
     try:
         tensor = transform_image(image_byte).to(device)
         pred = model.forward(tensor)
