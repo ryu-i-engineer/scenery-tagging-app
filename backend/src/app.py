@@ -3,6 +3,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_cors.decorator import cross_origin
 
+from waitress import serve
+
 from inference import get_prediction
 
 app = Flask(__name__)
@@ -38,4 +40,5 @@ def handle_over_file_size(error):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run()
+    serve(app, host='0.0.0.0', port=5000)
